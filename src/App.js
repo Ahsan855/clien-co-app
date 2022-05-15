@@ -1,4 +1,3 @@
-import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import publicRoute from "./routes/publicRoutes";
