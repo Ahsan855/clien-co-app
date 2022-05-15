@@ -1,9 +1,24 @@
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import Services from "./Pages/Services";
+
 function App() {
   return (
-    <div>
-      <h1 className="text-4xl text-red-500">clean co</h1>
-      <button className="btn btn-primary">class</button>
-    </div>
+  
+      <Navbar>
+        <Routes>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/about" element={<About/>}></Route>
+          <Route path="/services" element={<Services/>}></Route>
+          <Route path="/contact" element={<Contact/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+        </Routes>
+      </Navbar>
+   
   );
 }
 
