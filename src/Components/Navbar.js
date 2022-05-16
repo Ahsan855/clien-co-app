@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = ({ children }) => {
+  const [dark, setDark] = useState(false);
+
   return (
-    <div className="drawer drawer-end">
+    <div className="drawer drawer-end" data-theme={dark ? "dark" : "light"}>
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
@@ -78,7 +80,7 @@ const Navbar = ({ children }) => {
 
               <label className="swap swap-rotate">
                 {/* <!-- this hidden checkbox controls the state --> */}
-                <input type="checkbox" data-toggle-theme="dark,light" />
+                <input type="checkbox" onClick={() => setDark(!dark)} />
 
                 {/* <!-- sun icon --> */}
                 <svg
@@ -133,6 +135,26 @@ const Navbar = ({ children }) => {
               Login
             </NavLink>
           </li>
+          <div
+            tabindex="0"
+            class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+          >
+            <div class="collapse-title text-xl font-medium">
+             Book Now
+            </div>
+            <div class="collapse-content">
+            <li>
+            <NavLink to="/contact" className="rounded-lg">
+              Quick Book
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/login" className="rounded-lg">
+              Pre Book
+            </NavLink>
+          </li>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
