@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
 
 const Navbar = ({ children }) => {
   const [dark, setDark] = useState(false);
-
+const [admin]=useAdmin()
   return (
     <div className="drawer drawer-end" data-theme={dark ? "dark" : "light"}>
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
@@ -37,6 +38,13 @@ const Navbar = ({ children }) => {
                   Home
                 </NavLink>
               </li>
+              { admin &&
+                (<li>
+                <NavLink to="/dashboard" className="rounded-lg">
+                  Dashboard
+                </NavLink>
+              </li>)
+              }
               <li>
                 <NavLink to="/about" className="rounded-lg">
                   About
@@ -57,6 +65,7 @@ const Navbar = ({ children }) => {
                   Login
                 </NavLink>
               </li>
+             
 
               <li className="dropdown dropdown-end dropdown-hover">
                 <label
@@ -70,10 +79,10 @@ const Navbar = ({ children }) => {
                   className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <a>Item 1</a>
+                    <a>Quick Book</a>
                   </li>
                   <li>
-                    <a>Item 2</a>
+                    <a>Pro Book</a>
                   </li>
                 </ul>
               </li>
@@ -137,22 +146,20 @@ const Navbar = ({ children }) => {
           </li>
           <div
             tabindex="0"
-            class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+            className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
           >
-            <div class="collapse-title text-xl font-medium">
-             Book Now
-            </div>
-            <div class="collapse-content">
-            <li>
-            <NavLink to="/contact" className="rounded-lg">
-              Quick Book
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/login" className="rounded-lg">
-              Pre Book
-            </NavLink>
-          </li>
+            <div className="collapse-title text-xl font-medium">Book Now</div>
+            <div className="collapse-content">
+              <li>
+                <NavLink to="/contact" className="rounded-lg">
+                  Quick Book
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/login" className="rounded-lg">
+                  Pre Book
+                </NavLink>
+              </li>
             </div>
           </div>
         </ul>
